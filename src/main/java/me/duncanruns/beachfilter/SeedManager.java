@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Level;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class SeedManager {
@@ -18,8 +19,13 @@ public final class SeedManager {
 
     public static boolean canTake() {
         if (seedExists.get()) {
-            if (System.currentTimeMillis() - currentResult.getStartTime() > 60_000) {
+            Instant instant = Instant.now();
+            long currentTime = instant.getEpochSecond() * 1_000_000_000 + instant.getNano();
+            long timeSinceGeneration = currentTime - currentResult.getStartTime();
+            if (timeSinceGeneration > 60_000_000_000L) {
+                BeachFilterMod.LOGGER.log(Level.INFO, "Cached seed trashed since it was more than a minute old.");
                 seedExists.set(false);
+                return false;
             }
             return true;
         }
