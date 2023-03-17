@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "beachfilter-mod",
-  "version": "1.0.0",
+  "version": "${version}",
   "name": "BeachFilter Mod",
   "description": "A mod which overrides atum's seed to be generated from the beach filter.",
   "authors": [
