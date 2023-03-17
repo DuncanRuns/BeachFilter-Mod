@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "beachfilter-mod",
+  "version": "1.0.0",
+  "name": "BeachFilter Mod",
+  "description": "A mod which overrides atum's seed to be generated from the beach filter.",
+  "authors": [
+    "DuncanRuns"
+  ],
+  "license": "MIT",
+  "icon": "assets/beachfilter-mod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "me.duncanruns.beachfilter.BeachFilterMod"
+    ]
+  },
+  "mixins": [
+    "beachfilter-mod.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "~1.16.1",
+    "fabricloader": "*",
+    "atum": ">=1.1.3"
+  }
+}

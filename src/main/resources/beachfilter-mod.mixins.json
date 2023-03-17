@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "me.duncanruns.beachfilter.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "CreateWorldScreenMixin"
+  ],
+  "mixins": [
+    "CommandManagerMixin"
+  ]
+}
