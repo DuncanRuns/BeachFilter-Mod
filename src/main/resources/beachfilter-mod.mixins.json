@@ -6,7 +6,9 @@
     "defaultRequire": 1
   },
   "client": [
-    "CreateWorldScreenMixin"
+    "CreateWorldScreenMixin",
+    "DebugHudMixin",
+    "LevelLoadingScreenMixin"
   ],
   "mixins": [
     "CommandManagerMixin"
