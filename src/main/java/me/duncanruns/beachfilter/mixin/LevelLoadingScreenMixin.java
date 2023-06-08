@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(LevelLoadingScreen.class)
 public abstract class LevelLoadingScreenMixin extends Screen {
@@ -16,9 +15,11 @@ public abstract class LevelLoadingScreenMixin extends Screen {
         super(title);
     }
 
-    @Inject(method = "render", at = @At("TAIL"), locals = LocalCapture.CAPTURE_FAILSOFT)
-    public void drawBeachSeedText(int mouseX, int mouseY, float delta, CallbackInfo ci, String string, int i, int j, int k) {
+    @Inject(method = "render", at = @At("TAIL"))
+    public void drawBeachSeedText(int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (BeachFilterMod.shouldRun()) {
+            int i = this.width / 2;
+            int j = this.height / 2;
             this.drawCenteredString(this.minecraft.textRenderer, "Beach Seed", i, j - 4 - 50, 16777215);
         }
     }
