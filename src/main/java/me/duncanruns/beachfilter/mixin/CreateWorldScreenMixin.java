@@ -43,7 +43,7 @@ public abstract class CreateWorldScreenMixin extends Screen {
         } else {
             BeachFilterMod.LOGGER.info("Seed is not ready, filtering...");
             SeedManager.find();
-            client.openScreen(new FilteringScreen());
+            minecraft.openScreen(new FilteringScreen());
             info.cancel();
         }
     }
@@ -55,7 +55,7 @@ public abstract class CreateWorldScreenMixin extends Screen {
         }
     }
 
-    @Inject(method = "createLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;method_29607(Ljava/lang/String;Lnet/minecraft/world/level/LevelInfo;Lnet/minecraft/util/registry/RegistryTracker$Modifiable;Lnet/minecraft/world/gen/GeneratorOptions;)V", shift = At.Shift.BEFORE))
+    @Inject(method = "createLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;startIntegratedServer(Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/world/level/LevelInfo;)V", shift = At.Shift.BEFORE))
     private void hideTheAtumSeed(CallbackInfo ci) throws IOException {
         if (doTheThing) {
             Atum.seed = "";
