@@ -39,10 +39,6 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = 16
-}
-
 java {
 }
 
