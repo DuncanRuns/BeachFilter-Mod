@@ -28,7 +28,7 @@ dependencies {
     modImplementation(name: 'atum-1.1.3+1.16.1')
 
     // Using a compiled jar because the kaptainwutax libraries seem to be causing issues for jitpack and gradle
-    include implementation(name: 'BeachFilter-1.0.0')
+    include implementation(name: 'BeachFilter-1.0.1')
 }
 
 processResources {
