@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "me.duncanruns.beachfilter.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_8",
   "injectors": {
     "defaultRequire": 1
   },

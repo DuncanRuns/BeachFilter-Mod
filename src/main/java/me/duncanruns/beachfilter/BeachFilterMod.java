@@ -7,8 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 public class BeachFilterMod implements ModInitializer {
@@ -23,7 +24,7 @@ public class BeachFilterMod implements ModInitializer {
     public static void setLastToken(String lastToken) {
         BeachFilterMod.lastToken = lastToken;
         try {
-            Files.writeString(Path.of("beachtoken.txt"), lastToken);
+            Files.write(Paths.get("beachtoken.txt"), lastToken.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ignored) {
         }
     }
@@ -36,7 +37,7 @@ public class BeachFilterMod implements ModInitializer {
     public void onInitialize() {
         LOGGER.log(Level.INFO, "BeachFilterMod: Initializing");
         try {
-            lastToken = Files.readString(Path.of("beachtoken.txt"));
+            lastToken = new String(Files.readAllBytes(Paths.get("beachtoken.txt")));
         } catch (IOException ignored) {
         }
     }
