@@ -43,7 +43,6 @@ public abstract class CreateWorldScreenMixin extends Screen {
         } else {
             BeachFilterMod.LOGGER.info("Seed is not ready, filtering...");
             SeedManager.find();
-            Atum.hotkeyState = Atum.HotkeyState.PRE_WORLDGEN;
             minecraft.openScreen(new FilteringScreen());
             info.cancel();
         }
