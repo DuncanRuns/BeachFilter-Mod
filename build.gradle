@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.3-SNAPSHOT'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
 
 }
@@ -15,6 +15,7 @@ group = project.maven_group
 repositories {
     flatDir {
         dirs("libs")
+        dirs("libs/sources")
     }
 }
 
@@ -25,7 +26,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // atum implementation
-    modImplementation(name: 'atum-1.1.3+1.16.1')
+    modImplementation(name: 'atum-1.2.2+1.16.1')
 
     // Using a compiled jar because the kaptainwutax libraries seem to be causing issues for jitpack and gradle
     include implementation(name: 'BeachFilter-1.0.1')

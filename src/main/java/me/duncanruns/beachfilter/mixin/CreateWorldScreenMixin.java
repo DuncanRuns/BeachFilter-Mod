@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screen.world.CreateWorldScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -19,7 +20,7 @@ import java.io.IOException;
 @Mixin(CreateWorldScreen.class)
 public abstract class CreateWorldScreenMixin extends Screen {
 
-    private boolean doTheThing = false;
+    @Unique private boolean doTheThing = false;
 
     @Shadow
     private TextFieldWidget levelNameField;
@@ -43,7 +44,6 @@ public abstract class CreateWorldScreenMixin extends Screen {
         } else {
             BeachFilterMod.LOGGER.info("Seed is not ready, filtering...");
             SeedManager.find();
-            Atum.hotkeyState = Atum.HotkeyState.PRE_WORLDGEN;
             client.openScreen(new FilteringScreen());
             info.cancel();
         }
